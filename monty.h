@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -51,10 +52,16 @@ typedef struct arg_s
 
 extern arg_s *arguments;
 
+/* getline function prototypes */
+ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream);
+
 /* functions that satisfies the first checks */
 void check_arguments(int argc);
 void initialize_args(void);
 void malloc_failed(void);
 void free_arguments(void);
+void get_file_failed(char *fileName);
+void get_file(char *fileName);
+
 
 #endif /*MONTY_H*/

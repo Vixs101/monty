@@ -35,3 +35,15 @@ void free_arguments(void)
 
 	free(arguments);
 }
+
+/**
+ * get_file_failed - Handles the error when reading a file fails
+ * @fileName: the nae of the file that fail to open
+ */
+
+void get_file_failed(char *fileName)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", fileName);
+	free_arguments();
+	exit(EXIT_FAILURE);
+}

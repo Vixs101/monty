@@ -1,6 +1,6 @@
 #include "monty.h"
 
-arg_s *arguments = NULL
+arg_s *arguments = NULL;
 
 /**
  * main - entry point
@@ -10,19 +10,15 @@ arg_s *arguments = NULL
  */
 int main(int argc, char *argv[])
 {
-	FILE *file;
+	size_t n = 0;
 
 	check_arguments(argc);
+	initialize_args();
+	get_file(argv[1]);
 
-	file = fopen(argv[1], "r");
-
-	if (file == NULL)
+	while (custom_getline(&arguments->line, &n, arguments->file) != -1)
 	{
-		fprintf(stderr, "Error: Can't open file %s", argv[1]);
-		exit(EXIT_FAILURE);
+		printf("%s\n", arguments->line);
 	}
-
-	fclose(file);
-
 	return (0);
 }
